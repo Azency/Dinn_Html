@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="qwebchannel.js"></script> 
+    <script type="text/javascript">
+    
+
+
+
+    
+    function call2(channel){
+    	var result = document.getElementsByName("rs");
+	var webobj = channel.objects.webobj;
+	//var result = document.getElementsByName("rs");
+	
+        window.foo = webobj;
+    	result[0].value = webobj.enc_image_array;
+    
+    }
+    
+    
+    
+    function call1(channel){
+        var nums = document.getElementsByName("num");
+        var sz = document.getElementsByName("js");
+
+        var n1 = parseFloat(nums[0].value);
+        var n2 = parseFloat(nums[1].value);
+    	var result = document.getElementsByName("rs");
+    	
+	var webobj = channel.objects.webobj;
+	//var result = document.getElementsByName("rs");
+	
+        window.foo = webobj;
+
+
+
+
+        webobj.encrypt("sfhksdhf");
+        result[0].value = webobj.enc_image_array;
+        //webobj.num1 = String(n1);
+        //webobj.num2 = String(n2);
+        //webobj.add(String(n1),String(n2));
+        
+        //String(webobj.result)
+        //new QWebChannel(qt.webChannelTransport,call2 );
+        //result[0].value = "call1";
+    };
+    function call3(channel){
+	var webobj = channel.objects.webobj;
+	//var result = document.getElementsByName("rs");
+	
+        window.foo = webobj;
+        call1(channel);
+        call2(channel);
+    
+    }
+      //new QWebChannel(qt.webChannelTransport,call);
+    </script>
+    <script type="text/javascript">
+
+function XXX(channel) {
+	
+	
+	var li1 = function(str)
+	{
+	var result = document.getElementsByName("rs");
+		
+		result[0].value = str;
+	
+	
+	};
+	var webobj = channel.objects.webobj;
+	window.foo = webobj;
+	webobj.encrypt("dsdsdf");
+	webobj.trans_data_from_C_to_js.connect(li1);
+	//result[0].value = "callXXX"
+	
+	
+	
+}
+        
+function abc()
+        {
+	new QWebChannel(qt.webChannelTransport,XXX)
+
+
+		}
+          
+      </script>
+</head>
+<body>
+    <div align="center">
+        <input type="text" name="num" value="" onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+        <select name="js" size="1">
+            <option value="add">+</option>
+            <option value="min">-</option>
+            <option value="mul">*</option>
+            <option value="div">/</option>
+        </select>
+   <input type="text" name="num" value=""onkeyup="value=value.replace(/^\D*(\d*(?:\.\d{0,2})?).*$/g, '$1')" />
+  =
+   <input type="text" name="rs" value=""/><br>
+   <button id="btn"onclick="abc()">计算</button>
+</div>
+</body>
+</html>
